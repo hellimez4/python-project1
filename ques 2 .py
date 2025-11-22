@@ -4,58 +4,51 @@
 # Lets the user “add” items by typing their names.
 # For each valid item, asks for the quantity. Keeps adding to the cart until the user types "checkout".
 # Displays a final bill: each item, quantity, subtotal, and total. Skills practiced: dictionaries,
-# loops, input(), math operations, formatting, error handling. help me solve easly way
-# step1 Create a dictionary of items with prices, Create an empty cart, Ask user to type item names in a loop,
-# then After checkout → print bill
+# loops, input(), math operations, formatting, error handling. help me solve way
+# steps  What We need to do
+# Have a dictionary of groceries.
+# User types item names to add.
+# Ask for quantity.
+# End with "checkout".
+# Print each item, quantity, subtotal, and grand total.
 
 groceries = {
-    "apple": 10.0,
-    "turkey": 11.0,
-    "potatoes": 5.0,
-    "flour": 2.5
+    "apple": 1.00,
+    "milk": 2.50,
+    "turkey": 8.00,
+    "eggs": 2.00
 }
 
 cart = {}
 
-print("Available items:")
+print("Available groceries:")
 for item, price in groceries.items():
     print(f"- {item}: ${price}")
 
 while True:
-    user_item = input("\nEnter item name (or type 'checkout'): ").strip().lower()
+    item = input("Add item (or type 'checkout'): ").lower()
 
-    if user_item == "checkout":
+    if item == "checkout":
         break
 
-    # check if item exists
-    if user_item not in groceries:
-        print("❌ Item not found. Try again.")
-        continue
-
-    # ask quantity
-    try:
-        qty = int(input("Enter quantity: "))
-    except ValueError:
-        print("❌ Please enter a valid number.")
-        continue
-
-    # add to cart
-    if user_item in cart:
-        cart[user_item] += qty
+    if item in groceries:
+        qty = int(input("Quantity: "))
+        cart[item] = cart.get(item, 0) + qty
+        print("Added!")
     else:
-        cart[user_item] = qty
+        print("Item not found!")
 
-print("\n🧾 FINAL BILL")
-print("-----------------------")
-
+# --- Final Bill ---
+print("\n---- FINAL BILL ----")
 total = 0
 
 for item, qty in cart.items():
     price = groceries[item]
-    subtotal = price * qty
+    subtotal = qty * price
+    print(f"{item} x{qty} = ${subtotal}")
     total += subtotal
-    print(f"{item} x {qty} = ${subtotal:.2f}")
 
+print("Total:", total)
 print("-----------------------")
 print(f"TOTAL = ${total:.2f}")
 
