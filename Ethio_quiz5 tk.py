@@ -11,6 +11,14 @@ ethiopia_quiz = [
         "question": "2. In which region of Ethiopia is the oldest mosque in Africa, Al-Negashi, located?",
         "answer": "tigray"
     },
+    { 
+        "question": "3. What is the Zagwe dynasty most known for building? ",
+        "answer": "Lalibela"
+    },
+    {
+        "question": "4. What was the first major kingdom in Ethiopia?",
+        "answer": "Axum"
+    },
     # ... (more question dictionaries follow)
     {
         "question": "8. What is the name of the traditional, ancient calendar used by the Oromo people in southern Ethiopia?",
